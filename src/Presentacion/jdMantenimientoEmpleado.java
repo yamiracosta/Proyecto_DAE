@@ -3,16 +3,9 @@ package Presentacion;
 import Negocio.Empleado2;
 import Negocio.TipoDocumento;
 import Negocio.TipoEmpleado;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.Timer;
 
 /**
  *
