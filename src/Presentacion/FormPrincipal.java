@@ -592,7 +592,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         Image icono = null;
         try {
-            icono = new ImageIcon(jdVentanaResumenContrato.class.getResource("/Recursos/imagen_empresa_ficticia.png")).getImage();
+            icono = new ImageIcon(jdVentanaResumenContrato.class.getResource("/Recursos/micasahomedecor.jpeg")).getImage();
         } catch (Exception e) {
             System.out.println("No se pudo cargar la imagen: " + e.getMessage());
         }

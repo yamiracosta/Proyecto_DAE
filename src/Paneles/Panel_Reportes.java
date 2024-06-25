@@ -5,6 +5,7 @@
 package Paneles;
 import java.awt.Frame;
 import javax.swing.SwingUtilities;
+import Presentacion.*;
 
 /**
  *
@@ -332,7 +333,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteElisbeth_1ActionPerformed
 
     private void btnReportePedro_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePedro_1ActionPerformed
-        // TODO add your handling code here:
+        jdRep_boleta_informativa obj = new jdRep_boleta_informativa((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReportePedro_1ActionPerformed
 
     private void btnReportePedro_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePedro_2ActionPerformed

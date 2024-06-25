@@ -5,6 +5,7 @@ import Negocio.Login;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.geom.RoundRectangle2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class jdLogin extends javax.swing.JDialog {
 
     Login inicio = new Login();
+    int radius = 50;
     
     public jdLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -28,6 +30,7 @@ public class jdLogin extends javax.swing.JDialog {
         txtUsuario.requestFocus();
         
         setTitle("Inicio de Sesión");
+        this.setShape(new RoundRectangle2D.Double(0, 0, this.getWidth(), this.getHeight(), radius, radius));
     }
     
     public void limpiarCampos(){
@@ -53,8 +56,10 @@ public class jdLogin extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_efecto_V1_JWC2 = new btn_efecto01_jwc.btn_efecto_V1_JWC();
+        btnVolver1 = new btn_efecto01_jwc.btn_efecto_V1_JWC();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -166,6 +171,28 @@ public class jdLogin extends javax.swing.JDialog {
         });
         panel_Round_Degradado_JWC2.add(btn_efecto_V1_JWC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 260, 50));
 
+        btnVolver1.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/boton-x.png"))); // NOI18N
+        btnVolver1.setText("");
+        btnVolver1.setBackground_Hover_1(new java.awt.Color(255, 51, 51));
+        btnVolver1.setBackground_Hover_2(new java.awt.Color(204, 0, 0));
+        btnVolver1.setBackground_No_Hover_1(new java.awt.Color(255, 51, 51));
+        btnVolver1.setBackground_No_Hover_2(new java.awt.Color(204, 0, 0));
+        btnVolver1.setEsquina_inferior_derecho(25);
+        btnVolver1.setEsquina_inferior_izquierdo(25);
+        btnVolver1.setEsquina_superior_derecho(25);
+        btnVolver1.setEsquina_superior_izquierdo(25);
+        btnVolver1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnVolver1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnVolver1.setIconTextGap(8);
+        btnVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolver1ActionPerformed(evt);
+            }
+        });
+        panel_Round_Degradado_JWC2.add(btnVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -244,6 +271,10 @@ public class jdLogin extends javax.swing.JDialog {
          System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnVolver1ActionPerformed
+
     public static Image obtenerImagen() {
 
         Image icono = null;
@@ -256,6 +287,7 @@ public class jdLogin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private btn_efecto01_jwc.btn_efecto_V1_JWC btnVolver1;
     private btn_efecto01_jwc.btn_efecto_V1_JWC btn_efecto_V1_JWC2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
