@@ -202,7 +202,6 @@ public class Empleado2 {
         //nombreusuario//contraseña//telefono
         String vige = vigencia.isSelected() ? "V" : "N";
         boolean tienehijos = conhijos.isSelected() ? true : false;
-        Integer supervisorId = identificarSupervisor(superior);
 
         try {
             CallableStatement pst = con.conexion().prepareCall(sql);
@@ -228,10 +227,10 @@ public class Empleado2 {
             pst.setString(11, vige);
             pst.setInt(12, emp.identificarTipoEmpleado(tipEmpleado));
             
-            if (supervisorId != null) {
-                pst.setInt(13, supervisorId.intValue());
+            if (superior.getSelectedIndex() != 0) {
+                pst.setInt(13, identificarSupervisor(superior));
             } else {
-                pst.setNull(13, Types.INTEGER); // Establecer el valor como NULL en la base de datos
+                pst.setNull(13, Types.NULL); // Establecer el valor como NULL en la base de datos
             }
             pst.setBoolean(14, tienehijos);
             

@@ -106,6 +106,7 @@ public class FormPrincipal extends javax.swing.JFrame {
                 String imagePath = "/Imagenes/GOperaciones.png";
                 ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
                 img_tipo_usuario.setIcon(icon);
+                habilitarOpciones("JEFE DE OPERACIONES");
                 //
             }
         }
@@ -571,7 +572,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 pt.accesoRegistroContrato(true);
                 
                 break;
-            default:
+            
+            case "JEFE DE OPERACIONES":
+                
                 //Jefe de Operaciones: Acceso a gestión de pagos y reportes de gastos
                 btnGestionarCredenciales.setEnabled(false);
                 btnMantenimiento.setEnabled(false);
@@ -584,6 +587,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 pt.accesoGestionPermisos(false);
                 pt.accesoRegistroContrato(false);
                 
+                break;
+                
+            default:
                 throw new AssertionError();
         }
     }

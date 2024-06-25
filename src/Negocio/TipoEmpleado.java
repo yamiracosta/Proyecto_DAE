@@ -48,8 +48,9 @@ public class TipoEmpleado {
             PreparedStatement pst = con.conexion().prepareStatement(sql);
             pst.setString(1, tipEmpleado.getSelectedItem().toString());
             ResultSet rs = pst.executeQuery();
-            rs.next();
-            valor = rs.getInt("id");
+            while (rs.next()) {
+                valor = rs.getInt("id");
+            }
             return valor;
         } catch (Exception e) {
             throw new Exception("Error al intentar identificar el codigo del tipo de empleado: " + e.getMessage());
