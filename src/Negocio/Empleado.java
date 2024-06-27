@@ -272,5 +272,41 @@ public class Empleado {
 
     //------------------------------------------------------REPORTES---------------------------------------------------------
     
-
+    public ResultSet obtenerEmpleados() throws Exception{
+        strSQL = "select concat(ape_paterno,' ',ape_materno,' ',nombres) as nombre_empleado from empleado";
+        Connection micon = null;
+        obj.conexion();
+        micon = obj.getCon();
+        try {
+            PreparedStatement ps = micon.prepareStatement(strSQL);
+            rs = ps.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            throw new Exception("Error al obtener empleados --> " + ex.getMessage());
+        } finally {
+            obj.desconexion();
+        }
+    }
+    
+    public int obtenerIdEmpleado(String empleado) throws Exception{
+        strSQL = "select id from empleado where concat(ape_paterno,' ',ape_materno,' ',nombres) = ?";
+        Connection micon = null;
+        obj.conexion();
+        micon = obj.getCon();
+        try {
+            int idemp = 0;
+            PreparedStatement ps = micon.prepareStatement(strSQL);
+            ps.setString(1, empleado);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                idemp = rs.getInt("id");
+            }
+            return idemp;
+        } catch (SQLException ex) {
+            throw new Exception("Error al obtener ID de empleado --> " + ex.getMessage());
+        } finally {
+            obj.desconexion();
+        }
+    }
+    
 }

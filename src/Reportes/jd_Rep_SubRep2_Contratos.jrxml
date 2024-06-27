@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jd_Rep_SubRep2_Contratos" language="groovy" pageWidth="379" pageHeight="842" columnWidth="339" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ddbad61-a002-41b9-9498-cc81d10ccaa4">
+	<property name="ireport.zoom" value="1.9965000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idemp_subr2" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="estadoc_subr2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select d.nombre,td.tipo,dd.monto from detalle_deduccion dd
+inner join deduccion d on d.id=dd.iddeduccion
+inner join contrato c on dd.idcontrato=c.id
+inner join tipo_deduccion td on td.id=d.idtipodeduccion
+inner join empleado e on e.id=c.idempleado
+where e.id=$P{idemp_subr2} and c.estado=$P{estadoc_subr2};]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="monto" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="267" height="28" uuid="5fea5b5c-2a98-461d-9008-94bbf2840d9f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RETENCIONES DE CONTRATO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="61" height="17" uuid="f5a3b2a3-cfbe-4116-b526-b75bcc1b5e79"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Retención]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="0" width="139" height="17" uuid="1b4351c1-42c9-4924-b403-23e0e6d84276"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Retención]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="96" height="17" uuid="c7958ba1-28af-44e7-a409-a7375de0adc5"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto retenido]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="61" height="20" uuid="e6d30078-4978-426c-8195-70c59a6356a1"/>
+				<textElement>
+					<font fontName="Nirmala UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="139" height="20" uuid="e65f633b-6dc8-4280-8ed4-75463149f143"/>
+				<textElement>
+					<font fontName="Nirmala UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="0" width="96" height="20" uuid="3fecf4ae-d7e8-4bb3-b08d-24386895f6d5"/>
+				<textElement>
+					<font fontName="Nirmala UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA["S/. "+$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="3" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="3" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R2_Reporte_Graf_permisos_mes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="911a851c-5080-45db-9700-ba9a457d3b8f">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="138"/>
+	<queryString>
+		<![CDATA[SELECT EXTRACT(MONTH FROM p.fechainicio) AS mes_numero,EXTRACT(YEAR FROM p.fechainicio) AS year,TO_CHAR(p.fechainicio, 'Month') AS mes_nombre,COUNT(*) AS cantidad_permisos
+FROM permiso p
+GROUP BY mes_numero, mes_nombre, year
+ORDER BY mes_numero, year;]]>
+	</queryString>
+	<field name="mes_numero" class="java.math.BigDecimal"/>
+	<field name="year" class="java.math.BigDecimal"/>
+	<field name="mes_nombre" class="java.lang.String"/>
+	<field name="cantidad_permisos" class="java.lang.Long"/>
+	<group name="mes">
+		<groupExpression><![CDATA[$F{mes_numero}]]></groupExpression>
+		<groupHeader>
+			<band height="55">
+				<textField>
+					<reportElement x="28" y="5" width="281" height="22" uuid="fd7f2121-346f-4ff3-82dc-98c38750f865"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{mes_nombre}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="67" y="31" width="246" height="20" uuid="ac37a4e9-4093-4cb5-b76a-fe9acf07d9b4"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cantidad de permisos:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="18" y="48" width="510" height="1" uuid="c943b971-030c-4efb-96e1-77615c7d43e7"/>
+				</line>
+				<line>
+					<reportElement x="18" y="29" width="510" height="1" uuid="61f2d61e-f235-429c-b440-cf66c15d1884"/>
+				</line>
+				<textField>
+					<reportElement x="453" y="5" width="62" height="20" uuid="cd8f6a45-bf8c-44ac-aa5b-76c166557eb4"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="4"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="144" y="4" width="268" height="47" uuid="31b128ee-4814-44ee-bcd5-5432f1d09a4b"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[GRAFICO DE REPORTES POR MES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="6" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="268" y="2" width="21" height="16" uuid="7727cee0-98d3-4a81-abcb-91bd82f0bb97"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad_permisos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="171" y="3" width="92" height="16" uuid="ea79a569-f9ac-41d8-b1da-bf50ab7546ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLO SE DIERON]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="3" width="129" height="16" uuid="236ae6db-6e5e-4773-9097-68a8007f6892"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERMISOS ESTE MES.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="453" y="4" width="100" height="20" uuid="ed0d499f-8f32-47cc-8d97-b8094f484f83"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="4" width="15" height="20" uuid="b0b1d2b7-83b5-48dc-a966-1dc3f0d2642a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="344" y="4" width="90" height="20" uuid="df1f89d5-a107-4af0-ad1a-a862fe55959e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NÚMERO PAGINA:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="218" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="64" y="11" width="433" height="197" uuid="35090687-83af-4bf6-8909-de05906e5e49"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{mes_nombre}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad_permisos}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

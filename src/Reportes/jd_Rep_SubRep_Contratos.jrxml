@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jd_Rep_SubRep_Contratos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9d6c9c5a-eedb-456d-8093-c234deeeb676">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idempleado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[--DATOS DEL EMPLEADO
+SELECT e.numdocumento,td.nombre as tipo_documento,concat(e.ape_paterno,' ',e.ape_materno,' ',e.nombres) as nombres_empleado,
+coalesce(correo,'No cuenta') as correo,e.telefono,te.nombre as tipo_empleado,
+case
+	when e.idempleadoempleado is null then 'No cuenta'
+	else (select concat(ape_paterno,' ',ape_materno,' ',nombres) from empleado where id=e.idempleadoempleado)
+end as nombre_superior,
+case
+	when e.estado='V' then 'Vigente'
+	when e.estado='N' then 'No vigente'
+end as estadoempleado,
+case
+	when e.tienehijos=true then 'Sí'
+	when e.tienehijos=false then 'No'
+end as tienehijos
+from empleado e
+inner join tipo_empleado te on te.id=e.idtipoempleado
+inner join tipo_documento td on td.id=e.idtipodocumento
+inner join area a on a.id=te.idarea
+where e.id=$P{idempleado};]]>
+	</queryString>
+	<field name="numdocumento" class="java.lang.String"/>
+	<field name="tipo_documento" class="java.lang.String"/>
+	<field name="nombres_empleado" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="tipo_empleado" class="java.lang.String"/>
+	<field name="nombre_superior" class="java.lang.String"/>
+	<field name="estadoempleado" class="java.lang.String"/>
+	<field name="tienehijos" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="509" height="28" uuid="348e00b0-7470-471a-938c-e83cfd562d0c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE EMPLEADO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="173" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="111" height="15" uuid="aace06e7-ca91-4437-b383-8c2ae6e36094"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° documento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="111" height="15" uuid="69e43182-ad1e-4aa8-8629-7844cc4c223a"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de documento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="69" width="111" height="15" uuid="acadd56c-aefa-4d2c-8a22-15c57ce93715"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos y Nombres:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="111" height="15" uuid="0a197d1d-363f-4bee-9a93-ef95b18658ec"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electrónico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="121" width="111" height="15" uuid="a3764a98-05eb-4cb6-93e5-e1ab3e01385b"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="148" width="111" height="15" uuid="81a37015-88e5-45ad-921f-32f369e40896"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Empleado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="14" width="62" height="15" uuid="2a1be216-de3d-421f-ac09-c5a05754a08e"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Superior:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="43" width="62" height="15" uuid="e6220569-d5e7-4e78-9dbd-2e0afccd2c99"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="69" width="62" height="15" uuid="233d568d-4956-47fd-834e-e45bedb71b5c"/>
+				<textElement>
+					<font fontName="Nirmala UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiene hijos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="14" width="165" height="15" uuid="103795a7-a6e5-4287-bea5-9907836e1186"/>
+				<textFieldExpression><![CDATA[$F{numdocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="43" width="165" height="15" uuid="24147c29-ef26-4eb0-879c-e81e52aa36a0"/>
+				<textFieldExpression><![CDATA[$F{tipo_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="69" width="165" height="15" uuid="2beb73a2-1838-47fe-991e-e7832c47092c"/>
+				<textFieldExpression><![CDATA[$F{nombres_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="95" width="165" height="15" uuid="e8b7f997-e0e5-46a8-a544-7bb6f9027af6"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="121" width="165" height="15" uuid="465bb58c-f74d-4543-8aff-2e9715ef427d"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="148" width="165" height="15" uuid="71038d22-ce66-44b9-992f-20c13e63bc56"/>
+				<textFieldExpression><![CDATA[$F{tipo_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="14" width="156" height="15" uuid="6d63ac1d-afbb-4dda-bce4-11635036b8db"/>
+				<textFieldExpression><![CDATA[$F{nombre_superior}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="43" width="156" height="15" uuid="7d3a03c5-bb2f-40a6-b38a-1df8817132f7"/>
+				<textFieldExpression><![CDATA[$F{estadoempleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="69" width="156" height="15" uuid="a27b5b11-9413-4488-8752-e675625ac3d2"/>
+				<textFieldExpression><![CDATA[$F{tienehijos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="5" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R1_Reporte_monto_num_empleados_area" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e831b18d-c0ac-4d62-9c31-898be1c22acd">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT a.nombre, coe.numero_empleados AS numero_empleados,
+       te.remuneracion, SUM(te.remuneracion) OVER(PARTITION BY a.nombre) AS monto_total, e.id AS id_empleado, e.numdocumento, e.nombres || ' ' || e.ape_paterno || ' ' || e.ape_materno AS nombre_completo
+FROM area a
+INNER JOIN tipo_empleado te ON a.id = te.idarea
+INNER JOIN empleado e ON te.id = e.idtipoempleado
+INNER JOIN
+(
+  SELECT a.id, COUNT(*) AS numero_empleados
+    FROM area a INNER JOIN tipo_empleado te ON a.id = te.idarea
+    	      INNER JOIN empleado e ON te.id = e.idtipoempleado
+    GROUP BY a.id
+) coe ON a.id = coe.id
+ORDER BY a.nombre, e.id;]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="numero_empleados" class="java.lang.Long"/>
+	<field name="remuneracion" class="java.math.BigDecimal"/>
+	<field name="monto_total" class="java.math.BigDecimal"/>
+	<field name="id_empleado" class="java.lang.Integer"/>
+	<field name="numdocumento" class="java.lang.String"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<group name="area">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+		<groupHeader>
+			<band height="62">
+				<textField>
+					<reportElement x="34" y="3" width="163" height="24" uuid="522eb7aa-149b-472e-9096-f92b454a984e"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="24" y="33" width="63" height="20" uuid="919317c8-de11-4131-ab6a-284cae049090"/>
+					<text><![CDATA[Id_empleado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="106" y="33" width="105" height="20" uuid="aba83483-948a-4839-afac-d4cae3b714cc"/>
+					<text><![CDATA[Número de documento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="273" y="33" width="86" height="20" uuid="da1ac00e-2d46-433a-b7ba-fc34f3808f5e"/>
+					<text><![CDATA[Nombre completo]]></text>
+				</staticText>
+				<line>
+					<reportElement x="15" y="56" width="520" height="1" uuid="ea3b12f4-22bf-4b1d-a62b-1f0ea30a86c6"/>
+				</line>
+				<line>
+					<reportElement x="15" y="29" width="520" height="1" uuid="ab07168a-7e1b-430e-abc0-11a8dae17eeb"/>
+				</line>
+				<textField>
+					<reportElement x="449" y="3" width="90" height="28" uuid="0211b9ff-c088-4b14-b7a2-59b46a19d9ff"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{monto_total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="440" y="33" width="80" height="20" uuid="4c1bc973-460e-43cc-a8ef-68bc6d801f8d"/>
+					<text><![CDATA[Remuneracion]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="309" y="3" width="54" height="24" uuid="5809af6c-8e17-4b85-873d-362771075b15"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero_empleados}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="208" y="3" width="113" height="27" uuid="cf1d27f5-3cc4-4bfa-9274-c4a67b120ebc"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[NÚMERO EMPLEADOS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="359" y="3" width="88" height="24" uuid="8b631e94-eb7b-452f-9040-3584f394a0c3"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="11"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="5" width="289" height="36" uuid="cca21e6b-adbb-4586-9f15-3f025b3b2633"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTES DE MONTO Y NÚMERO DE EMPLEADOS POR AREA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="8" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="4" width="28" height="20" uuid="3c0177e6-a1bf-4091-9cb0-800b96649469"/>
+				<textFieldExpression><![CDATA[$F{id_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="7" width="100" height="20" uuid="d7afa3ac-ec8e-495f-abd9-39c853d8aa62"/>
+				<textFieldExpression><![CDATA[$F{numdocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="7" width="181" height="20" uuid="b51c642f-ba16-42d6-a606-4ce965074cd7"/>
+				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="7" width="80" height="20" uuid="9f5a5927-b349-446d-9c10-687032de0b27"/>
+				<textFieldExpression><![CDATA[$F{remuneracion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="452" y="4" width="100" height="20" uuid="eb013bc1-8fc7-4e76-bfa5-f1f71970997e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="4" width="90" height="20" uuid="c589c2fb-fe82-4587-8cb7-57eda10a41f8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NÚMERO PAGINA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="427" y="4" width="15" height="20" uuid="c2e1f7be-9405-4dc3-b1ef-deb9cdd12879"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="233" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="15" y="6" width="520" height="220" uuid="ac594c38-3a78-4573-ab1e-553ae6ab25eb"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{nombre}]]></keyExpression>
+					<valueExpression><![CDATA[$F{numero_empleados}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

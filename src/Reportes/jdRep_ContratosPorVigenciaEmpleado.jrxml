@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jdRep_ContratosTipoEmpleado" language="groovy" pageWidth="1489" pageHeight="739" orientation="Landscape" columnWidth="1449" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55d23daf-b00f-4145-99fb-f522dfa8573e">
+	<property name="ireport.zoom" value="1.948717100000002"/>
+	<property name="ireport.x" value="159"/>
+	<property name="ireport.y" value="81"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="c184f154-848a-4f04-ae4e-bbb491b09e8b"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Reportes iReport\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idempleado_reporteprincipal" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="vigencia_cont" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.fechainicio,c.fechatermino,tc.nombre,c.salarioacordado,coalesce(c.responsabilidades,'Ninguna') as responsabilidades,
+case
+	when c.estado = 'V' then 'Vigente'
+	when c.estado = 'T' then 'Culminado'
+	when c.estado = 'A' then 'Anulado'
+end as estadocontrato,
+pp.nombre,c.fecharegistro,
+case
+	when c.vacacionespagadas=true then 'Sí'
+	when c.vacacionespagadas=false then 'No'
+end as vacacionespagadas,
+concat(ht.turno,' (',ht.horaentrada,' - ',ht.horasalida,')') as horariotrabajo
+from contrato c
+inner join tipo_contrato tc on tc.id=c.idtipocontrato
+inner join periodo_pago pp on pp.id=c.idperiodopago
+inner join horario_trabajo ht on ht.id=c.idhorariotrabajo
+inner join empleado e on e.id=c.idempleado
+inner join tipo_empleado te on te.id=e.idtipoempleado
+where e.id=$P{idempleado_reporteprincipal} and c.estado=$P{vigencia_cont};]]>
+	</queryString>
+	<field name="fechainicio" class="java.sql.Date"/>
+	<field name="fechatermino" class="java.sql.Date"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="salarioacordado" class="java.math.BigDecimal"/>
+	<field name="responsabilidades" class="java.lang.String"/>
+	<field name="estadocontrato" class="java.lang.String"/>
+	<field name="fecharegistro" class="java.sql.Date"/>
+	<field name="vacacionespagadas" class="java.lang.String"/>
+	<field name="horariotrabajo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="333" y="0" width="516" height="59" uuid="de2bb108-8296-4e00-b939-c5159bb12b91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CONTRATOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="0" width="100" height="20" uuid="c00b772a-d1d3-45b4-9b87-c66383d0688c"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="0" width="113" height="20" uuid="d7e50dd2-57a6-4542-aa10-5c900f2ef5d6"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de término]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="0" width="120" height="20" uuid="44699c76-471a-4aa6-8765-aa5fadba04c9"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="0" width="89" height="20" uuid="48853d0a-6528-47c6-aa53-1393574b5e35"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="542" y="0" width="230" height="20" uuid="d9efbe57-0b0c-40a6-9363-f0b11230aac2"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsabilidades asignadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="794" y="0" width="70" height="20" uuid="086b11a0-c528-4677-8e93-f1d2b1c21153"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="890" y="0" width="117" height="20" uuid="5bd1e3e4-9c0d-4b27-a423-12f71389fad4"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1032" y="0" width="197" height="20" uuid="c972b330-ad18-449c-8abb-ec48bb034ada"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Derecho a vacaciones pagadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1253" y="0" width="196" height="20" uuid="3c67e9db-ff03-48d2-97de-3ce674570216"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horario de trabajo]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="377" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="100" height="20" uuid="b6c502b2-3895-4398-9c6f-520d7995c31b"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="0" width="113" height="20" uuid="00a64d1c-686d-4f33-be7d-9daf8512c6d3"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechatermino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="120" height="20" uuid="acffb2cf-f520-4e7f-8630-7463624d20bf"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="0" width="89" height="20" uuid="f639eba0-1aba-4f79-a730-e2857df283e7"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["S/. "+$F{salarioacordado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="542" y="0" width="230" height="20" uuid="5155369b-935c-45a2-9486-a031adc1dddb"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{responsabilidades}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="794" y="0" width="70" height="20" uuid="a62ab24c-749c-438a-a491-aac274a9571a"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estadocontrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="890" y="0" width="117" height="20" uuid="d50c2b5e-dd9c-4e78-8dcb-96f946fed7b2"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecharegistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1032" y="0" width="197" height="20" uuid="d78378e7-8ccf-464e-abdd-b3466baec2b3"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vacacionespagadas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1253" y="0" width="196" height="20" uuid="077251e9-6afe-41d5-a90d-f52e40380414"/>
+				<textElement>
+					<font fontName="Nirmala UI" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horariotrabajo}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="22" y="40" width="555" height="306" uuid="c2ad9f1b-1dca-42a5-a5b2-aa8e82694b13"/>
+				<subreportParameter name="idempleado">
+					<subreportParameterExpression><![CDATA[$P{idempleado_reporteprincipal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jd_Rep_SubRep_Contratos.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="772" y="40" width="545" height="306" uuid="e3645fe4-03ff-435d-9a05-9fbca82b225e"/>
+				<subreportParameter name="idemp_subr2">
+					<subreportParameterExpression><![CDATA[$P{idempleado_reporteprincipal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="estadoc_subr2">
+					<subreportParameterExpression><![CDATA[$P{vigencia_cont}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jd_Rep_SubRep2_Contratos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -90,7 +90,7 @@ public class Panel_Reportes extends javax.swing.JPanel {
         btnReporteYamir_1.setBackground(new java.awt.Color(69, 161, 137));
         btnReporteYamir_1.setForeground(new java.awt.Color(255, 255, 255));
         btnReporteYamir_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/btn_reporte~1.png"))); // NOI18N
-        btnReporteYamir_1.setText("<html>INFORME DE TIPOLOGIA CONTRACTUAL </html>");
+        btnReporteYamir_1.setText("<html>INFORME DE CONTRATOS</html>");
         btnReporteYamir_1.setArco_esquina(20);
         btnReporteYamir_1.setColor_Hover(new java.awt.Color(255, 102, 0));
         btnReporteYamir_1.setColor_Normal(new java.awt.Color(69, 161, 137));
@@ -325,7 +325,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteFalu_2ActionPerformed
 
     private void btnReporteMarlon_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteMarlon_1ActionPerformed
-        // TODO add your handling code here:
+        jdRep_marlon01 obj = new jdRep_marlon01((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteMarlon_1ActionPerformed
 
     private void btnReporteElisbeth_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteElisbeth_1ActionPerformed
@@ -346,7 +347,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteElisbeth_2ActionPerformed
 
     private void btnReporteMarlon_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteMarlon_2ActionPerformed
-        // TODO add your handling code here:
+        jdRep_marlon02 obj = new jdRep_marlon02((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteMarlon_2ActionPerformed
 
     private void btnReporteYamir_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteYamir_2ActionPerformed
@@ -354,7 +356,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteYamir_2ActionPerformed
 
     private void btnReporteYamir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteYamir_1ActionPerformed
-        // TODO add your handling code here:
+        jdRep_ContratosVigenciaEmpleado obj = new jdRep_ContratosVigenciaEmpleado((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteYamir_1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
