@@ -1,20 +1,26 @@
 package Presentacion;
 
+import Negocio.Empleado;
 import Negocio.Reporte;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 import net.sf.jasperreports.swing.JRViewer;
 import Negocio.Empleado2;
 
 public class jd_Rep_boleta_informativa extends javax.swing.JDialog {
-    Empleado2 obj = new Empleado2();
+    Empleado obj = new Empleado();
     public void llamar(){
         try {
-            obj.listarSuperior(cbxEmpleado);
+            ResultSet rs = obj.obtenerEmpleados();
+            //Mostrar en el combo box:
+            while (rs.next()) {
+                cbxEmpleado.addItem(rs.getString("nombre_empleado"));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -99,7 +105,7 @@ public class jd_Rep_boleta_informativa extends javax.swing.JDialog {
             contenedor.setLayout(new BorderLayout());
             Map parametros = new HashMap();
 //            String selectedItem = (String) cbxEmpleado.getSelectedItem();
-            parametros.put("id", cbxEmpleado.getSelectedIndex());
+            parametros.put("id", obj.obtenerIdEmpleado(cbxEmpleado.getSelectedItem().toString()));
             
             //JOptionPane.showMessageDialog(this, "Procesando Reporte");
             JRViewer objReporte = new Reporte().reporteInterno("boleta_informatica_v2.jasper", parametros);

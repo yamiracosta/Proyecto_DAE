@@ -91,21 +91,21 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         switch (lblPuestoUsuario.getText()) {
             case "ADMINISTRADOR" -> {
-                String imagePath = "/Imagenes/administrador.jpg";
+                /*String imagePath = "/Imagenes/administrador.png";
                 ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
-                img_tipo_usuario.setIcon(icon);
+                img_tipo_usuario.setIcon(icon);*/
                 habilitarOpciones("ADMINISTRADOR");
             }
             case "JEFE DE RR.HH." -> {
-                String imagePath = "/Imagenes/RH_1.png";
+                /*String imagePath = "/Imagenes/RH_1.png";
                 ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
-                img_tipo_usuario.setIcon(icon);
+                img_tipo_usuario.setIcon(icon);*/
                 habilitarOpciones("JEFE DE RR.HH.");
             }
             default -> {
-                String imagePath = "/Imagenes/GOperaciones.png";
+                /*String imagePath = "/Imagenes/GOperaciones.png";
                 ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
-                img_tipo_usuario.setIcon(icon);
+                img_tipo_usuario.setIcon(icon);*/
                 habilitarOpciones("JEFE DE OPERACIONES");
                 //
             }
