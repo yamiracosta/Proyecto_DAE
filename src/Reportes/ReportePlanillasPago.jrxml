@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportePlanillasPago" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe44cc8b-f59b-4924-bfb5-3645d8a72c80">
+	<property name="ireport.zoom" value="0.8264462809917359"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\ELISBETH\\Desktop\\ReportesDAE\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_Empleado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    em.id AS empleado_id,
+    em.nombres || ' ' || em.ape_paterno || ' ' || em.ape_materno AS nombre_completo,
+    con.salarioacordado AS salario_base,
+    CASE
+        WHEN con.fechatermino IS NULL OR con.fechatermino > CURRENT_DATE THEN 'Vigente'
+        ELSE 'No vigente'
+    END AS contrato_vigente,
+    bol.fechapago,
+    bol.sueldopagado,
+    COALESCE(SUM(deb.monto), 0.00) AS total_beneficios,
+    COALESCE(string_agg(DISTINCT ben.nombre, ', '), 'Ninguno') AS beneficios_concatenados,
+    COALESCE(SUM(dcs.monto), 0.00) AS total_descuentos,
+    COALESCE(string_agg(DISTINCT descue.nombre, ', '), 'Ninguno') AS descuentos_concatenados
+FROM
+    empleado em
+JOIN
+    contrato con ON con.idempleado = em.id
+JOIN
+    boleta_pago bol ON bol.idcontrato = con.id
+LEFT JOIN
+    detalle_beneficio deb ON deb.idpago = bol.id
+LEFT JOIN
+    beneficio ben ON ben.id = deb.idbeneficio
+LEFT JOIN
+    detalle_descuento dcs ON dcs.idpago = bol.id
+LEFT JOIN
+    descuento descue ON descue.id = dcs.iddescuento
+WHERE
+    em.id = $P{id_Empleado}
+    AND bol.fechapago IS NOT NULL
+    AND bol.sueldopagado IS NOT NULL
+GROUP BY
+    em.id, em.nombres, em.ape_paterno, em.ape_materno, con.salarioacordado, con.fechatermino, bol.fechapago, bol.sueldopagado
+ORDER BY
+    bol.fechapago DESC;]]>
+	</queryString>
+	<field name="empleado_id" class="java.lang.Integer"/>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="salario_base" class="java.math.BigDecimal"/>
+	<field name="contrato_vigente" class="java.lang.String"/>
+	<field name="fechapago" class="java.sql.Date"/>
+	<field name="sueldopagado" class="java.math.BigDecimal"/>
+	<field name="total_beneficios" class="java.math.BigDecimal"/>
+	<field name="beneficios_concatenados" class="java.lang.String"/>
+	<field name="total_descuentos" class="java.math.BigDecimal"/>
+	<field name="descuentos_concatenados" class="java.lang.String"/>
+	<group name="NOMBRE EMPLEADO">
+		<groupExpression><![CDATA[$F{nombre_completo}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<staticText>
+					<reportElement x="21" y="0" width="273" height="20" uuid="83b52874-2eac-45fc-b3cd-9575eb08c827"/>
+					<textElement>
+						<font size="13" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NOMBRE COMPLETO:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="205" y="0" width="211" height="20" uuid="58a8d1e9-a4a2-400d-b809-fcfb8b39629a"/>
+					<textElement>
+						<font size="13" isStrikeThrough="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="20" width="802" height="1" uuid="f9452b00-5765-4db3-9707-ee7612427059"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="19"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="193" splitType="Stretch">
+			<staticText>
+				<reportElement x="288" y="103" width="151" height="20" uuid="9817ca39-b8e6-41cb-b4e1-a540af2ae684"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="83" width="67" height="20" uuid="b30bc394-9ac2-4d88-bfd6-c15fee98716d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC: ]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="565" y="74" width="100" height="20" uuid="d486f6f6-5c29-493a-a4ec-9d51088b37a0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="33" backcolor="#006666" uuid="29fd54e1-3b18-47bd-bffa-e081f2187272"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="103" width="85" height="20" uuid="45186319-f066-4eba-841e-788ea19bef12"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="123" width="190" height="20" uuid="84f4e79a-a5f2-4662-bb24-3e1585ad244c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Elisbeth Girón Villegas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="74" width="40" height="20" uuid="4fd4d629-290b-4cc2-a14f-8f82a4bdb4e8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="83" width="100" height="20" uuid="8b51f241-03f6-41ca-97eb-20618ec1ca91"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<image>
+				<reportElement x="76" y="50" width="94" height="93" uuid="ab2bb884-e307-45d8-a817-da130aa18126"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="203" y="63" width="67" height="20" uuid="17f6d975-cc62-46bf-bcf8-8e59be415cc4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="157" width="802" height="33" backcolor="#006666" uuid="162d9f45-cb6c-4f11-921e-8d7ffece123f"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE PAGOS POR EMPLEADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="123" width="85" height="20" uuid="7d1ee106-9745-4d04-82cc-ae1aca92b0c0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="63" width="100" height="20" uuid="0576ac32-3aa5-4bd6-ad0d-03de7494004a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="322" y="0" width="156" height="20" uuid="2a10b0ba-ef7b-4dd6-b76d-a7f3d81c586b"/>
+				<textElement>
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PLANILLA DE PAGO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="174" splitType="Stretch">
+			<textField>
+				<reportElement x="590" y="31" width="100" height="20" uuid="5c6fbccb-2f1f-430f-a5f1-ef4ce57d096d"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechapago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="31" width="100" height="20" uuid="c2e8f7cb-eb0e-4fe7-bb07-d54e94289f0a"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA PAGO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="31" width="199" height="20" uuid="8b464ff0-2690-46f1-b0a1-2f2b0cbfa035"/>
+				<textElement>
+					<font size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{beneficios_concatenados}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="31" width="160" height="20" uuid="afebf920-4137-44d8-bbaf-3bfc65feead2"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE BENEFICIOS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="62" width="100" height="20" uuid="01553070-17ea-4ca9-acdc-356c2b15379d"/>
+				<textElement>
+					<font size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_beneficios}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="62" width="135" height="20" uuid="01d8eb03-e5ad-4594-af79-9b13ce28936d"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL BENEFICIOS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="590" y="64" width="190" height="20" uuid="980cf5c4-ad92-4392-87d0-5b18e2deb07b"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descuentos_concatenados}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="64" width="174" height="20" uuid="7257741a-e977-48d3-b522-625ff1f79714"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DESCUENTOS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="97" width="100" height="20" uuid="14464208-5169-40c2-aec4-cea8aa8f2f59"/>
+				<textElement>
+					<font size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrato_vigente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="95" width="117" height="20" uuid="f7983a76-a067-408e-85a9-0f174e3c96b4"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO CONTRATO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="590" y="95" width="100" height="20" uuid="b29f3090-07a0-4429-8f97-5d92f40655b6"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salario_base}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="97" width="140" height="20" uuid="28cb8ee7-c2d2-47a0-abc8-09503bcc74ac"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALARIO BASE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="590" y="130" width="100" height="20" uuid="ba983335-6bec-435c-a233-edd321ece684"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sueldopagado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="416" y="130" width="123" height="20" uuid="55042576-c8e1-41a3-848b-26d5c98de417"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUELDO PAGADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="130" width="100" height="20" uuid="545167d5-dc06-47d9-b5f1-2449d7ce26d6"/>
+				<textElement>
+					<font size="13" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_descuentos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="130" width="149" height="20" uuid="2a590360-49f9-4c4b-af89-5c50e4bf1102"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DESCUENTOS:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="162" width="798" height="1" uuid="9f6b9d88-f106-4ac6-b477-3018bba1e01e"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="690" y="0" width="100" height="20" uuid="dae1c07e-70fb-4505-867c-91dc4ec48fad"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

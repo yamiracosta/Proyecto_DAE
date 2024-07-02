@@ -555,6 +555,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 pt.accesoGestionPermisos(true);
                 pt.accesoRegistroContrato(true);
                 
+                btnReportes.setEnabled(true);
+                
                 break;
             case "JEFE DE RR.HH.":
                 //Acceso a contratos, operaciones relacionadas a ellos, y acceso a ciertos reportes:
@@ -571,6 +573,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 pt.accesoGestionPermisos(true);
                 pt.accesoRegistroContrato(true);
                 
+                btnReportes.setEnabled(false);
+                
                 break;
             
             case "JEFE DE OPERACIONES":
@@ -586,6 +590,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 pt.accesoGestionPagoTrabajador(true);
                 pt.accesoGestionPermisos(false);
                 pt.accesoRegistroContrato(false);
+                
+                btnReportes.setEnabled(false);
                 
                 break;
                 

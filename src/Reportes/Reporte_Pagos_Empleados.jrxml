@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Pagos_Empleados" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7561601-13a6-4dcd-a580-f197e81e66c9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+    e.id AS id_empleado,
+    e.nombres || ' ' || e.ape_paterno AS empleado,
+    TO_CHAR(bp.fechapago, 'DD/MM/YYYY') AS fechapago,
+    TO_CHAR(bp.fechapago, 'Month') AS mes,
+    EXTRACT(YEAR FROM bp.fechapago) AS anio,
+    bp.montototal AS montototal_pago,
+    bp.sueldopagado AS sueldopagado,
+    bp.montodiastrabajados AS dias_trabajados
+FROM
+    public.empleado e
+JOIN
+    public.boleta_pago bp ON e.id = bp.idoperador
+WHERE
+    bp.fechapago IS NOT NULL
+    AND bp.montototal IS NOT NULL
+    AND bp.sueldopagado IS NOT NULL
+    AND bp.montodiastrabajados IS NOT NULL
+ORDER BY
+    e.nombres, e.ape_paterno;]]>
+	</queryString>
+	<field name="id_empleado" class="java.lang.Integer"/>
+	<field name="empleado" class="java.lang.String"/>
+	<field name="fechapago" class="java.lang.String"/>
+	<field name="mes" class="java.lang.String"/>
+	<field name="anio" class="java.math.BigDecimal"/>
+	<field name="montototal_pago" class="java.math.BigDecimal"/>
+	<field name="sueldopagado" class="java.math.BigDecimal"/>
+	<field name="dias_trabajados" class="java.math.BigDecimal"/>
+	<group name="Fechas">
+		<groupExpression><![CDATA[$F{mes}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<textField>
+					<reportElement x="226" y="4" width="100" height="20" uuid="2ce42602-143a-4419-a03a-9b6b1047d16e"/>
+					<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="453" y="4" width="43" height="20" forecolor="#CC0033" uuid="32dfa45a-9c13-4dba-addf-ebde32ad5c53"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[AÑO:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="496" y="4" width="100" height="20" uuid="fbba81b4-e895-43f2-b6b3-304229b2d53a"/>
+					<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="193" y="4" width="33" height="20" forecolor="#CC0033" uuid="15dccce5-2af1-49de-9e12-d31735238259"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[MES:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="188" y="23" width="76" height="1" uuid="b6901361-6303-4c5b-87a1-a0febf1a6f50"/>
+				</line>
+				<line>
+					<reportElement x="453" y="23" width="75" height="1" uuid="92bcc6b4-3fde-4f9e-ac0c-b16799150fad"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="13"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="190" splitType="Stretch">
+			<staticText>
+				<reportElement x="203" y="83" width="67" height="20" uuid="6d16f700-6959-4481-9930-d9ed4a96cbf0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="103" width="151" height="20" uuid="00f92428-1094-4782-b128-d618e0fc215a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="83" width="100" height="20" uuid="2250e901-cbea-4c24-b643-eadb29e920a6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="33" backcolor="#006666" uuid="c74748de-66d3-4e87-8e19-08e56a77be81"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="103" width="85" height="20" uuid="f05c4527-709d-47ac-a5a0-5becbb8cd31b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="74" width="40" height="20" uuid="cffd200a-6ce6-48dc-8608-a51075b6465b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="76" y="50" width="94" height="93" uuid="21cd0a8a-785c-4499-8df7-f0035f25d187"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="203" y="123" width="85" height="20" uuid="91232891-8f93-4a43-a2c8-7073b60209ac"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="63" width="100" height="20" uuid="cc898c9f-9ac4-4cfe-b03b-7672fd047849"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="157" width="802" height="33" backcolor="#006666" uuid="e24faddf-ed13-45b2-846f-431a26866524"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE PAGOS POR EMPLEADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="63" width="67" height="20" uuid="f44ca142-c5ca-4ddb-ac4b-98d9ce003aac"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="123" width="190" height="20" uuid="24956b64-16a2-47db-b768-e0c2a2fe37b4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Elisbeth Girón Villegas]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="568" y="74" width="100" height="20" uuid="0321fa5c-d348-4c49-a0f4-29384b4b34cb"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="21" width="802" height="1" uuid="cf8d8211-766c-464f-af5c-8457a3aa4a32"/>
+			</line>
+			<staticText>
+				<reportElement x="61" y="2" width="100" height="20" uuid="f28428e4-7a68-4a7e-83f6-25797547e808"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="0" width="100" height="20" uuid="04b08542-4044-4ba3-8653-eda969eb2a6e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLEADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="2" width="100" height="20" uuid="e2129363-7fbf-4a55-83e4-8866206b9156"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA PAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="2" width="100" height="20" uuid="f3f73a7d-43fd-4853-9f48-56d3e050be04"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DÍAS TRABAJADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="2" width="100" height="20" uuid="d71a6535-68cc-45c0-99d2-e17022836d09"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MONTO TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="613" y="2" width="100" height="20" uuid="a9b6ed76-9fa9-4795-8e20-90b1144678b0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Berlin Sans FB" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUELDO PAGADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="270" y="2" width="100" height="20" uuid="6231b5c6-22a9-4611-9a27-3e6f08951146"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fechapago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="2" width="100" height="20" uuid="c3aac75f-884c-45e2-b88c-62de82aba31a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dias_trabajados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="613" y="0" width="100" height="20" uuid="ddb18ce7-354d-4105-a928-a46b5e20db2e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sueldopagado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="100" height="20" uuid="d27af478-f971-4561-bb52-e6e889fc19b4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="2" width="100" height="20" uuid="505c9f7a-3acd-4978-ac65-34008353d457"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="2" width="100" height="20" uuid="7a549e12-a711-49ce-ad77-71547d0c1533"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{montototal_pago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="13" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

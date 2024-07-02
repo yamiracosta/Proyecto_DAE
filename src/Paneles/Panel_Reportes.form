@@ -239,7 +239,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/btn_reporte~1.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME MENSUAL DE PRESTACIONES LEGALES&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME DE BENEFICIOS DE LEY DE EMPLEADOS&lt;/html&gt;"/>
             <Property name="arco_esquina" type="int" value="20"/>
             <Property name="color_Hover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="ff" type="rgb"/>
@@ -387,7 +387,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/btn_reporte~1.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME DE REMUNERACIONES&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME DE PLANILLAS DE PAGO&lt;/html&gt;"/>
             <Property name="arco_esquina" type="int" value="20"/>
             <Property name="color_Hover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="ff" type="rgb"/>

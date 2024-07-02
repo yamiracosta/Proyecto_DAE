@@ -110,7 +110,7 @@ public class Panel_Reportes extends javax.swing.JPanel {
         btnReporteYamir_2.setBackground(new java.awt.Color(69, 161, 137));
         btnReporteYamir_2.setForeground(new java.awt.Color(255, 255, 255));
         btnReporteYamir_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/btn_reporte~1.png"))); // NOI18N
-        btnReporteYamir_2.setText("<html>INFORME MENSUAL DE PRESTACIONES LEGALES</html>");
+        btnReporteYamir_2.setText("<html>INFORME DE BENEFICIOS DE LEY DE EMPLEADOS</html>");
         btnReporteYamir_2.setArco_esquina(20);
         btnReporteYamir_2.setColor_Hover(new java.awt.Color(255, 102, 0));
         btnReporteYamir_2.setColor_Normal(new java.awt.Color(69, 161, 137));
@@ -190,7 +190,7 @@ public class Panel_Reportes extends javax.swing.JPanel {
         btnReporteElisbeth_2.setBackground(new java.awt.Color(69, 161, 137));
         btnReporteElisbeth_2.setForeground(new java.awt.Color(255, 255, 255));
         btnReporteElisbeth_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/btn_reporte~1.png"))); // NOI18N
-        btnReporteElisbeth_2.setText("<html>INFORME DE REMUNERACIONES</html>");
+        btnReporteElisbeth_2.setText("<html>INFORME DE PLANILLAS DE PAGO</html>");
         btnReporteElisbeth_2.setArco_esquina(20);
         btnReporteElisbeth_2.setColor_Hover(new java.awt.Color(255, 102, 0));
         btnReporteElisbeth_2.setColor_Normal(new java.awt.Color(69, 161, 137));
