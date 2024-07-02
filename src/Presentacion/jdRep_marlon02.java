@@ -39,11 +39,11 @@ public class jdRep_marlon02 extends javax.swing.JDialog {
         vistaReporte.setLayout(vistaReporteLayout);
         vistaReporteLayout.setHorizontalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1160, Short.MAX_VALUE)
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 568, Short.MAX_VALUE)
         );
 
         btnVerReporte.setText("Ver Reporte");
@@ -61,21 +61,21 @@ public class jdRep_marlon02 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(vistaReporte)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(277, 277, 277)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVerReporte)
                 .addGap(34, 34, 34)
                 .addComponent(btnVerReportegraf)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addGap(461, 461, 461))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVerReportegraf)
                     .addComponent(btnVerReporte))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vistaReporte)
                 .addContainerGap())
         );

@@ -52,10 +52,10 @@ public class jd_REPORTE_HORAS_TRABAJADAS_X_EMPLEADO extends javax.swing.JDialog 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("TRABAJADOR:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, 20));
 
         cbxListaEmpleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---------------------------" }));
-        jPanel1.add(cbxListaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 250, -1));
+        jPanel1.add(cbxListaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 250, -1));
 
         btnGenerarReporte.setText("GENERAR REPORTE");
         btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -63,26 +63,26 @@ public class jd_REPORTE_HORAS_TRABAJADAS_X_EMPLEADO extends javax.swing.JDialog 
                 btnGenerarReporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 150, 30));
+        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 150, 30));
 
         javax.swing.GroupLayout jdpReporteLayout = new javax.swing.GroupLayout(jdpReporte);
         jdpReporte.setLayout(jdpReporteLayout);
         jdpReporteLayout.setHorizontalGroup(
             jdpReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         jdpReporteLayout.setVerticalGroup(
             jdpReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 490, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jdpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 820, 490));
+        jPanel1.add(jdpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1140, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1165, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

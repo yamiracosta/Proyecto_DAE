@@ -71,11 +71,11 @@ public class jdRpt_PlanillasEmpleado extends javax.swing.JDialog {
         vistaReporte.setLayout(vistaReporteLayout);
         vistaReporteLayout.setHorizontalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGap(0, 1143, Short.MAX_VALUE)
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         jLabel1.setText("EMPLEADO");
@@ -92,13 +92,13 @@ public class jdRpt_PlanillasEmpleado extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(329, 329, 329)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addGap(88, 88, 88)
                 .addComponent(btnVerReporte)
-                .addGap(204, 204, 204))
+                .addContainerGap(403, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -108,17 +108,17 @@ public class jdRpt_PlanillasEmpleado extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnVerReporte)
                     .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(552, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(90, 90, 90)
+                    .addGap(54, 54, 54)
                     .addComponent(vistaReporte)
-                    .addGap(55, 55, 55)))
+                    .addContainerGap()))
         );
 
         pack();

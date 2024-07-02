@@ -45,11 +45,11 @@ public class jdReporte_BeneficiosLeyEmpleados extends javax.swing.JDialog {
         vistaReporte.setLayout(vistaReporteLayout);
         vistaReporteLayout.setHorizontalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1159, Short.MAX_VALUE)
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGap(0, 577, Short.MAX_VALUE)
         );
 
         jButton1.setText("VER REPORTE");
@@ -67,10 +67,10 @@ public class jdReporte_BeneficiosLeyEmpleados extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(vistaReporte)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(389, 389, 389)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(380, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(518, 518, 518))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

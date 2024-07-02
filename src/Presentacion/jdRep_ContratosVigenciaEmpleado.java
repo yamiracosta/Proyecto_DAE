@@ -83,7 +83,7 @@ public class jdRep_ContratosVigenciaEmpleado extends javax.swing.JDialog {
         );
         dpLayout.setVerticalGroup(
             dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
 
         cboVigencia.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
@@ -117,10 +117,11 @@ public class jdRep_ContratosVigenciaEmpleado extends javax.swing.JDialog {
                     .addComponent(dp)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cboVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
+                        .addGap(133, 133, 133)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 534, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

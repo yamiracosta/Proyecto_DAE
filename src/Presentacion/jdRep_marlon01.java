@@ -38,11 +38,11 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
         vistaReporte.setLayout(vistaReporteLayout);
         vistaReporteLayout.setHorizontalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1155, Short.MAX_VALUE)
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -54,9 +54,9 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
                 .addComponent(vistaReporte)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
+                .addGap(520, 520, 520)
                 .addComponent(btnVerReporte)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

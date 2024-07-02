@@ -65,16 +65,16 @@ public class jd_REPORTE_ASISTENCIAS_REGISTRADAS extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("MES:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 20));
 
         cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------------", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
-        jPanel1.add(cbxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+        jPanel1.add(cbxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
 
         jLabel4.setText("ESTADO:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, 20));
 
         cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------------", "Con Permiso", "Asistio", "Falto", "Tardanza", "Tardanza Justificada", "Falta Justificada", "Vacaciones" }));
-        jPanel1.add(cbxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+        jPanel1.add(cbxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, -1));
 
         btnGenerarReporte.setText("Generar Reporte");
         btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -82,30 +82,30 @@ public class jd_REPORTE_ASISTENCIAS_REGISTRADAS extends javax.swing.JDialog {
                 btnGenerarReporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, 30));
+        jPanel1.add(btnGenerarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, 30));
 
         javax.swing.GroupLayout jdpReporteLayout = new javax.swing.GroupLayout(jdpReporte);
         jdpReporte.setLayout(jdpReporteLayout);
         jdpReporteLayout.setHorizontalGroup(
             jdpReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         jdpReporteLayout.setVerticalGroup(
             jdpReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jdpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 850, 440));
+        jPanel1.add(jdpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1140, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1162, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
 
         pack();

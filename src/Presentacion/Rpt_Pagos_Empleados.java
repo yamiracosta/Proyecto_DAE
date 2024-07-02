@@ -39,7 +39,7 @@ public class Rpt_Pagos_Empleados extends javax.swing.JDialog {
         vistaReporte.setLayout(vistaReporteLayout);
         vistaReporteLayout.setHorizontalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1157, Short.MAX_VALUE)
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -54,10 +54,10 @@ public class Rpt_Pagos_Empleados extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(vistaReporte)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVerReporte)
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addGap(537, 537, 537))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
