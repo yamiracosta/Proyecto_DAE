@@ -190,7 +190,7 @@ public class Panel_Reportes extends javax.swing.JPanel {
         btnReporteElisbeth_2.setBackground(new java.awt.Color(69, 161, 137));
         btnReporteElisbeth_2.setForeground(new java.awt.Color(255, 255, 255));
         btnReporteElisbeth_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/btn_reporte~1.png"))); // NOI18N
-        btnReporteElisbeth_2.setText("<html>INFORME DE PLANILLAS DE PAGO</html>");
+        btnReporteElisbeth_2.setText("<html>INFORME DE PLANILLAS DE PAGO POR EMPLEADO</html>");
         btnReporteElisbeth_2.setArco_esquina(20);
         btnReporteElisbeth_2.setColor_Hover(new java.awt.Color(255, 102, 0));
         btnReporteElisbeth_2.setColor_Normal(new java.awt.Color(69, 161, 137));
@@ -292,9 +292,9 @@ public class Panel_Reportes extends javax.swing.JPanel {
                     .addComponent(btnReporteMarlon_1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReporteMarlon_2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(contenedor_mantenimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReporteElisbeth_1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReporteElisbeth_2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contenedor_mantenimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnReporteElisbeth_2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReporteElisbeth_1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(contenedor_mantenimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReportePedro_1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,7 +347,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReportePedro_2ActionPerformed
 
     private void btnReporteElisbeth_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteElisbeth_2ActionPerformed
-        // TODO add your handling code here:
+        jdRpt_PlanillasEmpleado obj = new jdRpt_PlanillasEmpleado((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteElisbeth_2ActionPerformed
 
     private void btnReporteMarlon_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteMarlon_2ActionPerformed

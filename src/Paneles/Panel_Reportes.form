@@ -102,9 +102,9 @@
                       <Component id="btnReporteMarlon_2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnReporteElisbeth_1" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnReporteElisbeth_2" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnReporteElisbeth_2" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="btnReporteElisbeth_1" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -387,7 +387,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/btn_reporte~1.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME DE PLANILLAS DE PAGO&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;INFORME DE PLANILLAS DE PAGO POR EMPLEADO&lt;/html&gt;"/>
             <Property name="arco_esquina" type="int" value="20"/>
             <Property name="color_Hover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="ff" type="rgb"/>
