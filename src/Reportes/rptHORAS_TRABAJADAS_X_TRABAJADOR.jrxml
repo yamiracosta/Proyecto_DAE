@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptHORAS_TRABAJADAS_X_TRABAJADOR" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f52dfb31-1711-4d22-930e-80f9f8c1b857">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pmt_Empleado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    emp.numdocumento AS numero_documento,
+    CONCAT(emp.nombres, ' ', emp.ape_paterno, ' ', emp.ape_materno) AS Nombre,
+    DATE_TRUNC('month', asis.fecha) AS mes,
+    SUM(FLOOR(EXTRACT(EPOCH FROM (asis.horasalida - asis.horaentrada)) / 3600)) AS horas_completas
+FROM empleado AS emp
+INNER JOIN asistencia AS asis ON asis.idempleado = emp.id
+WHERE asis.estado IS NOT NULL
+    AND asis.horaentrada IS NOT NULL
+    AND asis.horasalida IS NOT NULL
+	AND asis.horasalida IS NOT NULL AND emp.id = $P{pmt_Empleado}
+GROUP BY emp.numdocumento, emp.nombres, emp.ape_paterno, emp.ape_materno, DATE_TRUNC('month', asis.fecha)
+ORDER BY mes;]]>
+	</queryString>
+	<field name="numero_documento" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="mes" class="java.sql.Timestamp"/>
+	<field name="horas_completas" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="156" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="43" backcolor="#006666" uuid="7b5e79f8-13eb-438f-bf1c-95e924d250a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="55" width="114" height="91" uuid="1f2fea6b-f587-49ec-b891-017056905111"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="155" width="555" height="1" uuid="48da007b-eeaa-4dfd-821e-d2cd8f76c85d"/>
+			</line>
+			<staticText>
+				<reportElement x="153" y="66" width="57" height="20" uuid="50de4577-e143-41b5-aa50-9e3d9703badd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="86" width="57" height="14" uuid="8626e30f-3274-4494-96e5-befc926b62e6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="100" width="57" height="14" uuid="98a34787-932d-446d-87a2-52968cfb00ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="114" width="57" height="14" uuid="debdb327-c3a7-4614-8eb2-494ec299bf7e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="66" width="84" height="20" uuid="116251ca-c40b-4ab9-813c-9b2289408055"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="86" width="84" height="14" uuid="b3ffa1c0-fa76-4be9-ac14-ce66244e86ec"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="100" width="148" height="14" uuid="21cf8225-5533-4714-bee4-cf9b8d6e200c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="114" width="148" height="14" uuid="0abe3799-97fc-4796-8028-9448aed9f735"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sanchez Mera Falu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="66" width="56" height="14" uuid="1f896a70-2ec4-420d-82f8-b171f0891c66"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="66" width="69" height="14" uuid="0c9d3f4b-7fa7-400c-88eb-a62c691437e3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[06/30/2024]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="17" width="555" height="43" backcolor="#006666" uuid="95f59c4d-f97d-4e4c-a76e-b5018f90d491"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE HORAS TRABAJADAS  POR MES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="39" width="555" height="1" uuid="96e39210-d653-405d-a9f8-9357dae52616"/>
+			</line>
+			<staticText>
+				<reportElement x="13" y="19" width="100" height="20" uuid="1eb6b608-ae72-457c-9454-4a8cbf640d9a"/>
+				<text><![CDATA[Nº DE DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="20" width="115" height="20" uuid="45702bda-9972-4d79-b876-c61c1d2c3ed1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="20" width="100" height="20" uuid="3fbfc3dd-e3b9-4d2f-8b0b-6c7571599dbd"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="19" width="100" height="20" uuid="1082282b-b08c-4f1a-a4d9-76d46dbb63a6"/>
+				<text><![CDATA[HORAS COMPLETADAS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="17" width="100" height="20" uuid="48008420-c1ba-4dfa-b22e-5cfa3125d209"/>
+				<textFieldExpression><![CDATA[$F{numero_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="17" width="115" height="20" uuid="5c830ac3-862e-466f-a2a6-be797e9462ea"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="17" width="36" height="20" uuid="8a42b7ce-b456-47f2-9a42-49fa6f500cf0"/>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="17" width="100" height="20" uuid="70b2ff5a-404b-41d3-8fc9-4e56bf871ad8"/>
+				<textFieldExpression><![CDATA[$F{horas_completas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

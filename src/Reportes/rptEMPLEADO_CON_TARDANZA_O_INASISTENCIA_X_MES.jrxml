@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptEMPLEADO_CON_TARDANZA_O_INASISTENCIA_X_MES" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6db3e083-14ae-45c4-903a-810c02cfc652">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pmt_Mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pmt_Estado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+	emp.numdocumento AS numero_documento,
+	CONCAT(emp.nombres, ' ', emp.ape_paterno, ' ', emp.ape_materno) AS Nombre,
+	tiem.nombre AS tipo_empleado,
+	DATE(asis.fecha) AS fecha,
+	CASE
+        WHEN asis.estado = 'CP' THEN 'Con Permiso'
+        WHEN asis.estado = 'A' THEN 'Asistió'
+        WHEN asis.estado = 'F' THEN 'Faltó'
+        WHEN asis.estado = 'T' THEN 'Tardanza'
+        WHEN asis.estado = 'TJ' THEN 'Tardanza Justificada'
+        WHEN asis.estado = 'FJ' THEN 'Falta Justificada'
+        WHEN asis.estado = 'V' THEN 'Vacaciones'
+        ELSE asis.estado
+    END AS estado
+FROM empleado AS emp
+INNER JOIN asistencia AS asis ON asis.idempleado = emp.id
+INNER JOIN tipo_empleado AS tiem ON tiem.id = emp.id
+WHERE asis.estado IS NOT NULL
+	AND EXTRACT(MONTH FROM asis.fecha) = $P{pmt_Mes}
+	AND (asis.estado = $P{pmt_Estado} OR $P{pmt_Estado} IS NULL);]]>
+	</queryString>
+	<field name="numero_documento" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="tipo_empleado" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="165" splitType="Stretch">
+			<image>
+				<reportElement x="23" y="65" width="114" height="91" uuid="9895fc56-c5a1-426e-a05c-6a2f882ca697"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="248" y="96" width="84" height="14" uuid="fc300547-111b-4ebe-bfcb-186af871f733"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="76" width="56" height="14" uuid="8ac276f4-7e07-4383-a282-868eefc02462"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="113" width="57" height="14" uuid="c84a0aeb-dea5-4e9e-83c5-17d7772a8509"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="76" width="57" height="20" uuid="9ed68c04-c9cb-4d56-80f2-384a437c0cad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="76" width="69" height="14" uuid="882944a6-25fa-45de-bd44-7e42825bd72d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[06/30/2024]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="132" width="57" height="14" uuid="912c7662-164b-4e0d-8abc-4be9b4deaf5b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="96" width="57" height="14" uuid="827f3987-8fe1-495d-814b-26bf1c4cd2fe"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="113" width="148" height="14" uuid="f8f4a66f-43b3-40f9-9909-db92d80c5f49"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="76" width="84" height="20" uuid="5c05da79-5a19-4d79-a405-753383c84e9d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="132" width="148" height="14" uuid="0d3de903-2d50-4d70-87ba-e7e30fe9fd6f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sanchez Mera Falu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="43" backcolor="#006666" uuid="8884011c-ea6f-4e2a-974d-596ddb4e8245"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="17" width="555" height="43" backcolor="#006666" uuid="c4998423-b1b2-4b98-9fb2-d4055f787627"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ASISTENCIAS REGISTRADAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="1decae0f-a789-4b93-abfa-bca7a305cd4f"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="30" width="51" height="20" uuid="27500f99-c067-4318-8926-26a11b4b31c6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[N° DNI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="50" width="555" height="1" uuid="5f1f8496-28a8-4771-b9c7-f164e01b43b4"/>
+			</line>
+			<staticText>
+				<reportElement x="66" y="31" width="125" height="20" uuid="d66dc2fe-d52e-4a0d-8ef5-325d466f9071"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="30" width="98" height="20" uuid="a6c79de7-6abf-46e8-9c9d-205e245b0221"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[PUESTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="31" width="79" height="20" uuid="ffe1e537-1094-452b-9ebb-3628bca5d461"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="30" width="100" height="20" uuid="36dfe80a-572a-407c-a6ab-12446c7b3499"/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="12" width="51" height="20" uuid="2b43a8f6-d4f5-4cff-a4fc-1796004cf8d4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{numero_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="12" width="114" height="20" uuid="d1dcb185-ad90-45c4-879b-98356df89aa7"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="12" width="98" height="20" uuid="b5160167-811b-4b7b-af7d-dfe1f5061a75"/>
+				<textFieldExpression><![CDATA[$F{tipo_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="12" width="79" height="20" uuid="052dc70d-9daa-4ae0-a326-12abf039fa54"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="12" width="100" height="20" uuid="9b4053c6-e565-4503-921e-cd6b06b3be26"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="0" y="15" width="100" height="20" uuid="12806e56-7950-47a5-a44c-6bb0db05aa79"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="15" width="62" height="20" uuid="2d105611-e0d1-46ff-9aa0-69c25182d860"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina  "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="15" width="40" height="20" uuid="1656878c-fac8-4eaf-8efb-2a03a8496aaa"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

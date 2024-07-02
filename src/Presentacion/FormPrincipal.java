@@ -595,7 +595,6 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     public static Image obtenerImagen() {
-
         Image icono = null;
         try {
             icono = new ImageIcon(jdVentanaResumenContrato.class.getResource("/Recursos/micasahomedecor.jpeg")).getImage();

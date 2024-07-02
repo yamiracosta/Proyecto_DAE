@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jdRep_BeneficiosLeyEmpleado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8db609a8-0c62-418c-a3eb-7bc7bdfe23e7">
+	<property name="ireport.zoom" value="2.415765000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="108"/>
+	<queryString>
+		<![CDATA[select distinct concat(e.ape_paterno, ' ',e.ape_materno,' ',e.nombres) as "Empleado",b.nombre,sum(db.monto) from detalle_beneficio db
+inner join beneficio b on b.id=db.idbeneficio
+inner join boleta_pago bp on bp.id=db.idpago
+inner join contrato c on c.id=bp.idcontrato
+inner join empleado e on e.id=c.idempleado
+group by concat(e.ape_paterno, ' ',e.ape_materno,' ',e.nombres),b.nombre
+order by 1;]]>
+	</queryString>
+	<field name="Empleado" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="sum" class="java.math.BigDecimal"/>
+	<group name="nombre_empleado">
+		<groupExpression><![CDATA[$F{Empleado}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement x="303" y="13" width="100" height="20" uuid="4185393c-a171-4bb3-8a8e-de8a5189acb2"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Beneficio de ley]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="435" y="13" width="100" height="20" uuid="6b639dda-333a-4f2f-9dd9-0fd7d445a3cf"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Monto total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="19" y="13" width="72" height="20" uuid="4669d80d-40d1-4e3a-a9ad-f733dd3d3a0f"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EMPLEADO:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="102" y="13" width="142" height="20" uuid="aa188aac-99a1-41e7-a6e8-62aa74467370"/>
+					<textElement>
+						<font size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Empleado}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="2"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="184" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="43" backcolor="#006666" uuid="a9b1ac58-4f9c-4fd5-8b78-066d3cd9f56d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="19" y="81" width="114" height="91" uuid="1b9dfd97-421f-4855-bf2f-cff57c34db01"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="159" y="143" width="57" height="14" uuid="065da108-6a4d-4613-9c9e-2c197e776907"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="115" width="57" height="14" uuid="d98b5fc2-aa43-480b-bbbb-1f5753097c77"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="115" width="84" height="14" uuid="6d1ca51a-648e-44de-b9b1-3790e329f0ee"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="129" width="148" height="14" uuid="9c34ad21-b4e0-4279-bd92-a2654e6d467d"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="95" width="84" height="20" uuid="431ad441-9a5b-41d5-994e-9a67c748e1cb"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="143" width="148" height="14" uuid="dad67c77-c30a-4604-b496-c1103edf7474"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Huamán Acosta, Jefferson Yamir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="53" width="69" height="14" uuid="29b9befb-f0ad-46dc-af86-d227d955c72c"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[06/30/2024]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="53" width="56" height="14" uuid="53470f23-63c1-46eb-ae9e-89dc30ffe58c"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="129" width="57" height="14" uuid="a31d7c37-809b-4739-b459-d87cd8c3b43f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="95" width="57" height="20" uuid="b88df190-9de0-4f2a-af42-a9ff05419b89"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="43" backcolor="#006666" uuid="94a88a05-f735-4793-97dc-52358b2b5a1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nirmala UI" size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE BENEFICIOS DE LEY DE EMPLEADOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="12" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="303" y="0" width="100" height="20" uuid="2a907c9b-f79b-43d5-add0-6d2f254cc6ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="100" height="20" uuid="424c36e9-1823-4943-a494-090e536de6c6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="c9b1cc1d-361d-492e-82ca-29427510552e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="36e02146-0aff-4848-9a43-e7c0d08b4f1f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="2" splitType="Stretch"/>
+	</summary>
+</jasperReport>

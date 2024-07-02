@@ -3,18 +3,29 @@ package Presentacion;
 import Negocio.Reporte;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+
 import net.sf.jasperreports.swing.JRViewer;
+import Negocio.Empleado2;
 
-public class jdRep_marlon01 extends javax.swing.JDialog {
-
-    Reporte objR = new Reporte();
-
-    public jdRep_marlon01(java.awt.Frame parent, boolean modal) {
+public class jd_Rep_pagos_realizado_por_mes extends javax.swing.JDialog {
+    Empleado2 obj = new Empleado2();
+    public void llamar(){
+        try {
+            obj.listarSuperior(cbxEmpleado);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public jd_Rep_pagos_realizado_por_mes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(this);
+        llamar();
         this.vistaReporte.setVisible(false);
+        setLocationRelativeTo(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +34,8 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
 
         btnVerReporte = new javax.swing.JButton();
         vistaReporte = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        cbxEmpleado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,8 +54,10 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 332, Short.MAX_VALUE)
         );
+
+        jLabel1.setText("EMPLEADO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,15 +68,22 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
                 .addComponent(vistaReporte)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(btnVerReporte)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(btnVerReporte)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerReporte)
+                    .addComponent(jLabel1)
+                    .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(vistaReporte)
                 .addContainerGap())
@@ -74,8 +96,12 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
         try {
             Container contenedor = this.vistaReporte;
             contenedor.setLayout(new BorderLayout());
+            Map parametros = new HashMap();
+//            String selectedItem = (String) cbxEmpleado.getSelectedItem();
+            parametros.put("is_empleado", cbxEmpleado.getSelectedIndex());
+            
             //JOptionPane.showMessageDialog(this, "Procesando Reporte");
-            JRViewer objReporte = objR.reporteInterno("R1_Reporte_monto_num_empleados_area.jasper", null);
+            JRViewer objReporte = new Reporte().reporteInterno("pago_mes.jasper", parametros);
             contenedor.add(objReporte);
             objReporte.setVisible(true);
 //Mostrar el reporte
@@ -90,6 +116,8 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVerReporte;
+    private javax.swing.JComboBox<String> cbxEmpleado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JDesktopPane vistaReporte;
     // End of variables declaration//GEN-END:variables
 }

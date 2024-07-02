@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R2_Reporte_Graf_permisos_mes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="911a851c-5080-45db-9700-ba9a457d3b8f">
-	<property name="ireport.zoom" value="1.6105100000000008"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R2_Reporte_Graf_permisos_mes" pageWidth="700" pageHeight="842" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="911a851c-5080-45db-9700-ba9a457d3b8f">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="138"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT EXTRACT(MONTH FROM p.fechainicio) AS mes_numero,EXTRACT(YEAR FROM p.fechainicio) AS year,TO_CHAR(p.fechainicio, 'Month') AS mes_nombre,COUNT(*) AS cantidad_permisos
 FROM permiso p
@@ -18,27 +18,27 @@ ORDER BY mes_numero, year;]]>
 		<groupHeader>
 			<band height="55">
 				<textField>
-					<reportElement x="28" y="5" width="281" height="22" uuid="fd7f2121-346f-4ff3-82dc-98c38750f865"/>
+					<reportElement x="98" y="5" width="281" height="22" uuid="fd7f2121-346f-4ff3-82dc-98c38750f865"/>
 					<textElement>
 						<font size="16" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{mes_nombre}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="67" y="31" width="246" height="20" uuid="ac37a4e9-4093-4cb5-b76a-fe9acf07d9b4"/>
+					<reportElement x="137" y="31" width="246" height="20" uuid="ac37a4e9-4093-4cb5-b76a-fe9acf07d9b4"/>
 					<textElement>
 						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Cantidad de permisos:]]></text>
 				</staticText>
 				<line>
-					<reportElement x="18" y="48" width="510" height="1" uuid="c943b971-030c-4efb-96e1-77615c7d43e7"/>
+					<reportElement x="43" y="48" width="580" height="1" uuid="c943b971-030c-4efb-96e1-77615c7d43e7"/>
 				</line>
 				<line>
-					<reportElement x="18" y="29" width="510" height="1" uuid="61f2d61e-f235-429c-b440-cf66c15d1884"/>
+					<reportElement x="43" y="29" width="580" height="1" uuid="61f2d61e-f235-429c-b440-cf66c15d1884"/>
 				</line>
 				<textField>
-					<reportElement x="453" y="5" width="62" height="20" uuid="cd8f6a45-bf8c-44ac-aa5b-76c166557eb4"/>
+					<reportElement x="523" y="5" width="62" height="20" uuid="cd8f6a45-bf8c-44ac-aa5b-76c166557eb4"/>
 					<textElement>
 						<font size="14" isBold="true"/>
 					</textElement>
@@ -47,25 +47,104 @@ ORDER BY mes_numero, year;]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="4"/>
+			<band height="7"/>
 		</groupFooter>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="56" splitType="Stretch">
+		<band height="188" splitType="Stretch">
 			<staticText>
-				<reportElement x="144" y="4" width="268" height="47" uuid="31b128ee-4814-44ee-bcd5-5432f1d09a4b"/>
+				<reportElement x="273" y="100" width="151" height="20" uuid="09e5756f-bd8d-4ee0-a64f-18031b5a8010"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro. 725 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="80" width="100" height="20" uuid="aa814c8b-37b2-408d-8220-54a2190eeb73"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="80" width="67" height="20" uuid="9bebf338-c644-497e-a48e-df7f6035200e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="660" height="33" backcolor="#006666" uuid="16556468-cd81-4ff6-bf77-f708ef4f5386"/>
 				<textElement textAlignment="Center">
-					<font size="18" isBold="true" isUnderline="true"/>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="120" width="190" height="20" uuid="56a8ee97-c3cf-452d-930c-206f3fdd634f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Marlon N. Paredes García]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="547" y="59" width="100" height="20" uuid="4e4c36f0-9808-47bf-b691-75f2dd699fbf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="154" width="660" height="33" backcolor="#006666" uuid="00de945f-8102-4065-8627-61be91c9da13"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
 				</textElement>
 				<text><![CDATA[GRAFICO DE REPORTES POR MES]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="504" y="60" width="40" height="20" uuid="cb98fa05-c8a9-44d6-997a-f9819898d9c0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="60" width="67" height="20" uuid="5783bc73-a271-491a-a727-b9c9e27dc2f7"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="60" width="100" height="20" uuid="cbc18a2b-ff6e-4a63-970a-9f660f4dfd8d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Decor mi Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="100" width="85" height="20" uuid="06ee6d21-e5af-4aad-b2a7-9db112c3004b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="120" width="85" height="20" uuid="37796a47-fd1d-42de-a269-3dcea05abdd1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="76" y="52" width="94" height="93" uuid="d91be817-6348-418d-9b78-fc8f35cd3521"/>
+				<imageExpression><![CDATA["D:\\NO BORRAR (NETBEANS)\\PROYECTO_FINAL_DAE (no borrar)\\src\\Recursos\\micasahomedecor.jpeg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="6" splitType="Stretch"/>
+		<band height="5" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="4" splitType="Stretch"/>
@@ -73,21 +152,21 @@ ORDER BY mes_numero, year;]]>
 	<detail>
 		<band height="26" splitType="Stretch">
 			<textField>
-				<reportElement x="268" y="2" width="21" height="16" uuid="7727cee0-98d3-4a81-abcb-91bd82f0bb97"/>
+				<reportElement x="338" y="2" width="21" height="16" uuid="7727cee0-98d3-4a81-abcb-91bd82f0bb97"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidad_permisos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="171" y="3" width="92" height="16" uuid="ea79a569-f9ac-41d8-b1da-bf50ab7546ec"/>
+				<reportElement x="241" y="3" width="92" height="16" uuid="ea79a569-f9ac-41d8-b1da-bf50ab7546ec"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SOLO SE DIERON]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="289" y="3" width="129" height="16" uuid="236ae6db-6e5e-4773-9097-68a8007f6892"/>
+				<reportElement x="359" y="3" width="129" height="16" uuid="236ae6db-6e5e-4773-9097-68a8007f6892"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -100,18 +179,13 @@ ORDER BY mes_numero, year;]]>
 	</columnFooter>
 	<pageFooter>
 		<band height="25" splitType="Stretch">
-			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="453" y="4" width="100" height="20" uuid="ed0d499f-8f32-47cc-8d97-b8094f484f83"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<textField>
-				<reportElement x="428" y="4" width="15" height="20" uuid="b0b1d2b7-83b5-48dc-a966-1dc3f0d2642a"/>
+				<reportElement x="385" y="4" width="15" height="20" uuid="b0b1d2b7-83b5-48dc-a966-1dc3f0d2642a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="344" y="4" width="90" height="20" uuid="df1f89d5-a107-4af0-ad1a-a862fe55959e"/>
+				<reportElement x="301" y="4" width="90" height="20" uuid="df1f89d5-a107-4af0-ad1a-a862fe55959e"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -123,7 +197,7 @@ ORDER BY mes_numero, year;]]>
 		<band height="218" splitType="Stretch">
 			<pie3DChart>
 				<chart>
-					<reportElement x="64" y="11" width="433" height="197" uuid="35090687-83af-4bf6-8909-de05906e5e49"/>
+					<reportElement x="86" y="11" width="511" height="197" uuid="35090687-83af-4bf6-8909-de05906e5e49"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

@@ -1,20 +1,21 @@
 package Presentacion;
-
 import Negocio.Reporte;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.swing.JRViewer;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.swing.JRViewer;
 
-public class jdRep_marlon01 extends javax.swing.JDialog {
+public class Rpt_Pagos_Empleados extends javax.swing.JDialog {
 
-    Reporte objR = new Reporte();
-
-    public jdRep_marlon01(java.awt.Frame parent, boolean modal) {
+    public Rpt_Pagos_Empleados(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(this);
         this.vistaReporte.setVisible(false);
+        setLocationRelativeTo(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +42,7 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
         );
         vistaReporteLayout.setVerticalGroup(
             vistaReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 565, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -55,7 +56,7 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(367, 367, 367)
                 .addComponent(btnVerReporte)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,7 +76,7 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
             Container contenedor = this.vistaReporte;
             contenedor.setLayout(new BorderLayout());
             //JOptionPane.showMessageDialog(this, "Procesando Reporte");
-            JRViewer objReporte = objR.reporteInterno("R1_Reporte_monto_num_empleados_area.jasper", null);
+            JRViewer objReporte = new Reporte().reporteInterno("Reporte_Pagos_Empleados.jasper", null);
             contenedor.add(objReporte);
             objReporte.setVisible(true);
 //Mostrar el reporte

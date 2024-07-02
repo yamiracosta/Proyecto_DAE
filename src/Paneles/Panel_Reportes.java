@@ -317,11 +317,13 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteFalu_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteFalu_1ActionPerformed
-        
+        jd_REPORTE_ASISTENCIAS_REGISTRADAS obj = new jd_REPORTE_ASISTENCIAS_REGISTRADAS((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteFalu_1ActionPerformed
 
     private void btnReporteFalu_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteFalu_2ActionPerformed
-        // TODO add your handling code here:
+        jd_REPORTE_HORAS_TRABAJADAS_X_EMPLEADO obj = new jd_REPORTE_HORAS_TRABAJADAS_X_EMPLEADO((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteFalu_2ActionPerformed
 
     private void btnReporteMarlon_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteMarlon_1ActionPerformed
@@ -330,16 +332,18 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteMarlon_1ActionPerformed
 
     private void btnReporteElisbeth_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteElisbeth_1ActionPerformed
-        // TODO add your handling code here:
+        Rpt_Pagos_Empleados obj = new Rpt_Pagos_Empleados((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteElisbeth_1ActionPerformed
 
     private void btnReportePedro_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePedro_1ActionPerformed
-        jdRep_boleta_informativa obj = new jdRep_boleta_informativa((Frame)SwingUtilities.getWindowAncestor(this), true);
+        jd_Rep_boleta_informativa obj = new jd_Rep_boleta_informativa((Frame)SwingUtilities.getWindowAncestor(this), true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnReportePedro_1ActionPerformed
 
     private void btnReportePedro_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePedro_2ActionPerformed
-        // TODO add your handling code here:
+        jd_Rep_pagos_realizado_por_mes obj = new jd_Rep_pagos_realizado_por_mes((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReportePedro_2ActionPerformed
 
     private void btnReporteElisbeth_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteElisbeth_2ActionPerformed
@@ -352,7 +356,8 @@ public class Panel_Reportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReporteMarlon_2ActionPerformed
 
     private void btnReporteYamir_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteYamir_2ActionPerformed
-        // TODO add your handling code here:
+        jdReporte_BeneficiosLeyEmpleados obj = new jdReporte_BeneficiosLeyEmpleados((Frame)SwingUtilities.getWindowAncestor(this), true);
+        obj.setVisible(true);
     }//GEN-LAST:event_btnReporteYamir_2ActionPerformed
 
     private void btnReporteYamir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteYamir_1ActionPerformed

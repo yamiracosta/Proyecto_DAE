@@ -422,5 +422,47 @@ public class Empleado2 {
             con.desconexion();
         }
     }
+    
+    
+    
+    //------------------------------------------------------------------------------------------------------
+    public void listarEmpleadosAsisteieron(JComboBox combo) throws Exception {
+        Conexion con = new Conexion();
+
+        String sql = "select DISTINCT CONCAT(emp.nombres, ' ', emp.ape_paterno, ' ', emp.ape_materno) AS Nombre FROM asistencia as asi \n"
+                + "INNER JOIN empleado as emp on emp.id = asi.idempleado WHERE asi.estado = 'A'";
+
+        try {
+            PreparedStatement pst = con.conexion().prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                combo.addItem(rs.getString("Nombre"));
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al intentar llenar el combo: " + e.getMessage());
+        }
+    }
+
+    public int identificarIdEmpleadoAsistio(JComboBox combo) throws Exception {
+        Conexion con = new Conexion();
+
+        String sql = "SELECT distinct emp.id as codigo\n" +
+                     "FROM empleado AS emp\n" +
+                     "INNER JOIN asistencia AS asi ON emp.id = asi.idempleado\n" +
+                     "WHERE asi.estado = 'A'\n" +
+                     "    AND CONCAT(emp.nombres, ' ', emp.ape_paterno, ' ', emp.ape_materno) = ?";
+        
+        try {
+            PreparedStatement pst = con.conexion().prepareStatement(sql);
+            pst.setString(1, combo.getSelectedItem().toString());
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                return rs.getInt("codigo");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al intentar identificar el nombre: " + e.getMessage());
+        }
+        return 0;
+    }
 
 }

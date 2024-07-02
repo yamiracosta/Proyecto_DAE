@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d0e17c1a-60e5-4c3c-9c5c-49e7a1a76797">
+	<property name="ireport.zoom" value="1.6105100000000037"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="is_empleado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT em.id, em.nombres || ' ' || em.ape_paterno || ' ' || em.ape_materno AS nombre, 
+con.salarioacordado, bol.fechapago, bol.sueldopagado FROM empleado em 
+JOIN contrato con ON con.idempleado = em.id 
+JOIN horario_trabajo hor ON hor.id = con.idhorariotrabajo 
+JOIN boleta_pago bol ON bol.idcontrato = con.id WHERE em.estado = 'V' AND em.id = $P{is_empleado} 
+AND bol.fechapago IS NOT NULL]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="salarioacordado" class="java.math.BigDecimal"/>
+	<field name="fechapago" class="java.sql.Date"/>
+	<field name="sueldopagado" class="java.math.BigDecimal"/>
+	<title>
+		<band height="205">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="149" width="555" height="30" backcolor="#006666" uuid="c80b5c68-4a32-4a53-8f3b-5e4b5f1d578d"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAGOS REALIZADOS POR MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="30" backcolor="#006666" uuid="f0dc0ad7-5a0d-44a2-954a-995b37392a35"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECOR MI CASA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="41" width="100" height="20" uuid="318c906f-f6f3-465d-bf22-e8b7a25301be"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="81" width="100" height="20" uuid="00f5e280-0c40-48bb-8320-9517b435c8bf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="115" width="100" height="20" uuid="6b8ec298-c208-47d7-a174-9ff047dd870e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="81" width="100" height="20" uuid="1a26bc11-991f-4197-aff0-788205ed01b1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ELABORADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="41" width="100" height="20" uuid="317c6832-2e5b-4d31-8e2a-b4ffca6226c9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="369" y="41" width="100" height="20" uuid="dbae45a8-02f2-4bff-ba64-7a17a2a0e4ab"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="41" width="100" height="20" uuid="338558c6-085a-41a4-84e3-81751b76e936"/>
+				<text><![CDATA[Decor mi casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="81" width="100" height="20" uuid="438859c5-4afb-44ea-a2e7-30ee675a0ca3"/>
+				<text><![CDATA[20602778518]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="115" width="146" height="20" uuid="f494748c-a6a3-4c0e-8adb-b35096804df0"/>
+				<text><![CDATA[Av. Pedro Ruiz Gallo Nro 725]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="81" width="146" height="20" uuid="55a1c9f7-748f-4b33-b5c2-d5f07fb24476"/>
+				<text><![CDATA[Pedro Morales Serrato]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="192" width="555" height="1" uuid="86abbf76-5f94-45bb-aecb-d6e0f1ea4fe4"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" uuid="7e72d1f4-42ab-41d3-aeed-68216d2622a8"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="e5b8eb7a-0d6b-4c16-9c71-8e4e1a9e57af"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="150" height="30" uuid="7841e5f7-5b6e-45c8-9f24-39dd5f91b00d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="100" height="30" uuid="a0450aeb-1e6b-47f1-80e8-9ef6156d5b34"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario Acordado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="30" uuid="f6e8cba4-2b64-4b1c-b2b3-1cb5dce4e9e5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="100" height="30" uuid="b7f33f3d-8a76-4a8f-b8c1-95baf0e3a2f1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo Pagado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41">
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" uuid="7e72d1f4-42ab-41d3-aeed-68216d2622a8"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="48f69ae3-8c23-4a77-8d2b-24903a64d9c3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="150" height="30" uuid="27d3f95c-48e0-4b44-8651-49e8e4f1db0f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="100" height="30" uuid="8932ab1c-49c3-4a7a-a216-6e74f1b1c4e6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{salarioacordado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="100" height="30" uuid="28e89f14-b1c2-4b69-9c13-c7b5f1a4a926"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fechapago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="f91b6f85-4c5e-47d6-a946-9f02f53c5f60"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sueldopagado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
