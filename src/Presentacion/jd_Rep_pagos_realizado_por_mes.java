@@ -38,6 +38,7 @@ public class jd_Rep_pagos_realizado_por_mes extends javax.swing.JDialog {
         cbxEmpleado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Disposiciones Salariales Mensuales");
 
         btnVerReporte.setText("Ver Reporte");
         btnVerReporte.addActionListener(new java.awt.event.ActionListener() {

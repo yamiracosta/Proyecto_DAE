@@ -514,15 +514,15 @@ public class jdMantenimientoDescuento extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
             listarTodo();
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(jdMantenimientoDescuento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tblDescuentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDescuentoKeyReleased

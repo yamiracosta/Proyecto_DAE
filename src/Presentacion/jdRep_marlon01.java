@@ -25,6 +25,7 @@ public class jdRep_marlon01 extends javax.swing.JDialog {
         vistaReporte = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Distribución Salarial y Plantilla");
 
         btnVerReporte.setText("Ver Reporte");
         btnVerReporte.addActionListener(new java.awt.event.ActionListener() {

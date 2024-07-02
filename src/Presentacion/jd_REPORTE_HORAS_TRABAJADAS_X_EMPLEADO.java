@@ -47,7 +47,7 @@ public class jd_REPORTE_HORAS_TRABAJADAS_X_EMPLEADO extends javax.swing.JDialog 
         jdpReporte = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("REPORTE DE HORAS TRABAJADAS POR EMPLEADO");
+        setTitle("Informe de Distribución de Horas Laborales");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

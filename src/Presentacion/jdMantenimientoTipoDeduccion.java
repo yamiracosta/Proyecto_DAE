@@ -461,7 +461,11 @@ public class jdMantenimientoTipoDeduccion extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        try {
+            listarTodo();
+        } catch (Exception ex) {
+            Logger.getLogger(jdMantenimientoTipoDeduccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tblTipoDeduccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTipoDeduccionMouseClicked
@@ -471,11 +475,7 @@ public class jdMantenimientoTipoDeduccion extends javax.swing.JDialog {
     }//GEN-LAST:event_tblTipoDeduccionMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        try {
-            listarTodo();
-        } catch (Exception ex) {
-            Logger.getLogger(jdMantenimientoTipoDeduccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tblTipoDeduccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblTipoDeduccionKeyReleased

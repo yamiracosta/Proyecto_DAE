@@ -39,6 +39,7 @@ public class jdReporte_BeneficiosLeyEmpleados extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Beneficios de Ley de Empleados");
 
         javax.swing.GroupLayout vistaReporteLayout = new javax.swing.GroupLayout(vistaReporte);
         vistaReporte.setLayout(vistaReporteLayout);

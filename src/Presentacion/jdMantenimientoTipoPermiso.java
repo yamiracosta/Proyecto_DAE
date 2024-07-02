@@ -90,6 +90,9 @@ public class jdMantenimientoTipoPermiso extends javax.swing.JDialog {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -530,11 +533,7 @@ public class jdMantenimientoTipoPermiso extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBuscarPorTipoKeyReleased
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        try {
-            perm.listarTablaTipoPermiso(tabla_TipoDocumento);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al intetar listar: " + e.getMessage());
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tabla_TipoDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_TipoDocumentoKeyReleased
@@ -548,6 +547,14 @@ public class jdMantenimientoTipoPermiso extends javax.swing.JDialog {
             txtDiasPermiso.setText(permiso.toString());
         }
     }//GEN-LAST:event_tabla_TipoDocumentoKeyReleased
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            perm.listarTablaTipoPermiso(tabla_TipoDocumento);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al intetar listar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

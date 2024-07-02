@@ -38,6 +38,7 @@ public class jd_Rep_boleta_informativa extends javax.swing.JDialog {
         cbxEmpleado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Comprobante Informativo");
 
         btnVerReporte.setText("Ver Reporte");
         btnVerReporte.addActionListener(new java.awt.event.ActionListener() {

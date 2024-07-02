@@ -26,6 +26,7 @@ public class jdRep_marlon02 extends javax.swing.JDialog {
         btnVerReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe Mensual de Solicitudes de Permisos");
 
         btnVerReportegraf.setText("Ver Grafico");
         btnVerReportegraf.addActionListener(new java.awt.event.ActionListener() {

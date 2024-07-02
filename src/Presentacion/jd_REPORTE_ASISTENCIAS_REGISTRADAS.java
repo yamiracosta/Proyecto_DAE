@@ -60,7 +60,7 @@ public class jd_REPORTE_ASISTENCIAS_REGISTRADAS extends javax.swing.JDialog {
         jdpReporte = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("REPORTE DE ASISTENCIAS REGISTRADAS");
+        setTitle("Informe de Récord de Aisstencia de Empleados");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

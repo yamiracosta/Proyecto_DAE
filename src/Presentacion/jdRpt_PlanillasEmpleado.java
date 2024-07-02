@@ -65,6 +65,7 @@ public class jdRpt_PlanillasEmpleado extends javax.swing.JDialog {
         cbxEmpleado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Planillas de Pago por Empleado");
 
         javax.swing.GroupLayout vistaReporteLayout = new javax.swing.GroupLayout(vistaReporte);
         vistaReporte.setLayout(vistaReporteLayout);

@@ -73,6 +73,7 @@ public class jdRep_ContratosVigenciaEmpleado extends javax.swing.JDialog {
         cboEmpleado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Contratos");
 
         javax.swing.GroupLayout dpLayout = new javax.swing.GroupLayout(dp);
         dp.setLayout(dpLayout);

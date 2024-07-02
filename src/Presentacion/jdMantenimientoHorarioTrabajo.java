@@ -255,6 +255,15 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
                         .addComponent(jLabel5)))
                 .addGap(34, 34, 34))
             .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panel_Round_Degradado_JWC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
                 .addGroup(panel_Round_Degradado_JWC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -262,26 +271,18 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
                     .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panel_Round_Degradado_JWC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Round_Degradado_JWC1Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(cboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(panel_Round_Degradado_JWC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(spnrHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panel_Round_Degradado_JWC1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(spnrHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(panel_Round_Degradado_JWC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spnrHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnrHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         panel_Round_Degradado_JWC1Layout.setVerticalGroup(
@@ -354,6 +355,7 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
         panel_Round_Degradado_JWC2.setSuperior_derecho(50);
 
         tblHorarioTrabajo.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
+        tblHorarioTrabajo.setForeground(new java.awt.Color(0, 0, 0));
         tblHorarioTrabajo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -591,7 +593,12 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
     }//GEN-LAST:event_spnrHoraSalidaPropertyChange
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        try {
+            cargarCboHorario();
+            listarTodo();
+        } catch (Exception ex) {
+            Logger.getLogger(jdMantenimientoHorarioTrabajo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tblHorarioTrabajoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHorarioTrabajoMouseClicked
@@ -615,12 +622,7 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
     }//GEN-LAST:event_tblHorarioTrabajoMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        try {
-            cargarCboHorario();
-            listarTodo();
-        } catch (Exception ex) {
-            Logger.getLogger(jdMantenimientoHorarioTrabajo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tblHorarioTrabajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHorarioTrabajoKeyReleased
@@ -645,6 +647,8 @@ public class jdMantenimientoHorarioTrabajo extends javax.swing.JDialog {
 
     private void cargarCboHorario() throws Exception {
         ResultSet rs = objTC.cargarTipoContratos();
+        cboHorario.removeAllItems();
+        cboHorario.addItem("---------------------");
         while (rs.next()) {
             cboHorario.addItem(rs.getString("nombre"));
         }

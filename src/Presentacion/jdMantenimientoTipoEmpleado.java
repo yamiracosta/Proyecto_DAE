@@ -471,7 +471,7 @@ public class jdMantenimientoTipoEmpleado extends javax.swing.JDialog {
 
     private void btnAgregarTipoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTipoEmpleadoActionPerformed
         try {
-            if (txtNombreTipoEmpleado.getText().isBlank() || cbxArea.getSelectedIndex() == 0 || txtDescripcionTipoEmpleado.getText().isBlank()
+            if (txtNombreTipoEmpleado.getText().isBlank() || txtDescripcionTipoEmpleado.getText().isBlank()
                     || txtRemuneracion.getText().isBlank()) {
                 JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos o seleccione un área");
             } else {

@@ -26,6 +26,7 @@ public class Rpt_Pagos_Empleados extends javax.swing.JDialog {
         vistaReporte = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe de Nóminas de Pago");
 
         btnVerReporte.setText("Ver Reporte");
         btnVerReporte.addActionListener(new java.awt.event.ActionListener() {

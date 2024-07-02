@@ -495,7 +495,12 @@ public class jdMantenimientoDeduccion extends javax.swing.JDialog {
     }//GEN-LAST:event_txtBuscarPorDeduccionKeyReleased
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        try {
+            listarTodo();
+            cargarCboTipoDeduccion();
+        } catch (Exception ex) {
+            Logger.getLogger(jdMantenimientoDeduccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tblDeduccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDeduccionMouseClicked
@@ -506,12 +511,7 @@ public class jdMantenimientoDeduccion extends javax.swing.JDialog {
     }//GEN-LAST:event_tblDeduccionMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        try {
-            listarTodo();
-            cargarCboTipoDeduccion();
-        } catch (Exception ex) {
-            Logger.getLogger(jdMantenimientoDeduccion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tblDeduccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDeduccionKeyReleased
@@ -523,6 +523,8 @@ public class jdMantenimientoDeduccion extends javax.swing.JDialog {
 
     private void cargarCboTipoDeduccion() throws Exception {
         ResultSet rs = objTD.cargarTiposDeduccion();
+        cboTipoDeduccion.removeAllItems();
+        cboTipoDeduccion.addItem("----------------------");
         while (rs.next()) {
             cboTipoDeduccion.addItem(rs.getString("tipo"));
         }

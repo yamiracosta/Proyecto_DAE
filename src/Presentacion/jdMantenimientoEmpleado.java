@@ -107,6 +107,9 @@ public class jdMantenimientoEmpleado extends javax.swing.JDialog {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -790,14 +793,7 @@ public class jdMantenimientoEmpleado extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNumeroDocumentoKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        try {
-            tdoc.listarTipoDocumento(cbxTipoDocumento);
-            temple.listarEmpleado(cbxTipoEmpleado);
-            mante.listarSuperior(cbxSuperior);
-            mante.listarTablaTrabajadores(tabla_Empleado);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void tabla_EmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabla_EmpleadoKeyReleased
@@ -842,6 +838,17 @@ public class jdMantenimientoEmpleado extends javax.swing.JDialog {
             cbxSuperior.setSelectedItem(superior);
         }
     }//GEN-LAST:event_tabla_EmpleadoKeyReleased
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            tdoc.listarTipoDocumento(cbxTipoDocumento);
+            temple.listarEmpleado(cbxTipoEmpleado);
+            mante.listarSuperior(cbxSuperior);
+            mante.listarTablaTrabajadores(tabla_Empleado);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     private void buscarTrabajador(String numdoc, String tipodoc) throws Exception {
         DefaultTableModel model = new DefaultTableModel();
